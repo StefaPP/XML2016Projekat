@@ -1,0 +1,33 @@
+<div>
+	<div style="align: center; width: 50;" class="jumbotron">
+		<h2 align="center">Amandmani</h2>
+		<br /> <br>
+		<div class="container">
+			<button class="btn btn-success topright" ng-click="value= !value;">Predlozi
+				novi amandman</button>
+			<table class="table">
+				<th>Naziv</th>
+				<tr ng-repeat="a in acts">
+						<td><a class="amandmani"
+						ng-click="actAmendments(a)">{{a.naziv.value}}</a>
+						<br/><br>
+						<div ng-show="amId == a.oznaka.value && hide">
+						<ul ng-repeat="am in amendments">
+							<li><u>{{am.naziv.value}}
+									<button class="btn btn-danger btn-xs" ng-click="povuciAmandman(am)">Povuci amandman</button>
+							</u></li>
+						</ul>
+						<div style="width: 50%;" class="form-group">
+							<br> <br>
+							<div style="border-style: solid;">
+								<h3>Predlozi amandman</h3>
+								<br> <input id={{a.naziv.value}} type="file" name="fajl" /> <br />
+								<button ng-click="uploadAmendment(a,$index)" class="btn btn-info">Predlozi</button>
+							</div>
+						</div>
+						</div></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

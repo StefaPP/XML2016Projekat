@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Akt 
+xmlns:p="http://www.parlament.gov.rs/propisi"
+xmlns="http://www.w3.org/ns/rdfa#"
+xmlns:pred="http://www.parlament.gov.rs/propisi/predicate/"  
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.parlament.gov.rs/propisi ../../schema/akt.xsd ">
+  <p:Glavni_deo/>
+<p:Sporedni_deo about="http://www.parlament.gov.rs/propisi/akti/u_proceduri/doc6">
+    <p:Akt_u_proceduri>
+      <p:Predlagac>p:Predlagac</p:Predlagac>
+      <p:Upucuje_se>p:Upucuje_se</p:Upucuje_se>
+      <p:Meta_podaci>
+        <p:Oznaka property="pred:oznaka" datatype="xs:string">doc6</p:Oznaka>
+        <p:Mesto property="pred:mesto" datatype="xs:string">Beograd</p:Mesto>
+        <p:Datum property="pred:datum" datatype="xs:date">2013-08-05</p:Datum>
+        <p:Vrsta property="pred:vrsta" datatype="xs:string">Odluka</p:Vrsta>
+        <p:Naziv property="pred:naziv" datatype="xs:string">Akt o kaznjavanju koljaca koji ne placaju obrezivanje</p:Naziv>
+        <p:BrUkupnihGlasova>0</p:BrUkupnihGlasova>
+        <p:BrPozitivnihGlasova>0</p:BrPozitivnihGlasova>
+      </p:Meta_podaci>
+    </p:Akt_u_proceduri>
+  </p:Sporedni_deo>
+</p:Akt>

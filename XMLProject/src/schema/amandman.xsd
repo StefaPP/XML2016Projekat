@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:p="http://www.parlament.gov.rs/propisi/"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.parlament.gov.rs/propisi/" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1">
+    <xs:element name="Amandman">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="p:Glavni_deo"/>
+                <xs:element ref="p:Sporedni_deo"/>
+            </xs:sequence>
+            <xs:attribute name="status" type="p:TStatusAmandmana"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Glavni_deo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Odeljak"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Clan"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Stav"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Tacka"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Podtacka"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Glava"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:Deo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType mixed="true" name="SadrzajTacke">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+            <xs:element name="Podtacka">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajPodtacke"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajStav">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Tacka">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajTacke"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajClan">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Tacka">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajTacke"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Stav">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajStav"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajOdeljka">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Clan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajClan"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajPodtacke">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Alineja">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="xs:string"/>
+                        <xs:element name="Status">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="status_izmene" type="xs:string"/>
+                                    <xs:element name="ref">
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:string">
+                                                  <xs:attribute name="id_ref" type="xs:string"/>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajGlave">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Clan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajClan"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Odeljak">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajOdeljka"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="SadrzajDeo">
+        <xs:sequence maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Clan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajClan"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Odeljak">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajOdeljka"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Glava">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Sadrzaj" type="p:SadrzajGlave"/>
+                    </xs:sequence>
+                    <xs:attribute name="oznaka" type="xs:string"/>
+                    <xs:attribute name="naziv" type="xs:string"/>
+                    <xs:attribute name="opis" type="xs:string"/>
+                    <xs:anyAttribute namespace="##any"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="p:ref"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Naziv">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="TStatusAmandmana">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="odbijen"/>
+            <xs:enumeration value="prihvacen"/>
+            <xs:enumeration value="u_proceduri"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element default="0" name="BrPozitivnihGlasova">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:int">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element default="0" name="BrUkupnihGlasova">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:int">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Oznaka">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Mesto">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Datum">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:date">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Vrsta">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ref">
+        <xs:complexType mixed="false">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="id_ref">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:pattern value="(\/[A-Za-z]*[0-9]*)+"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="TStatusAkta">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="donet"/>
+            <xs:enumeration value="u_proceduri"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="status_izmene" type="p:TStatusAkta"/>
+    <xs:complexType name="AmandmanStatus">
+        <xs:all>
+            <xs:element ref="p:ref"/>
+            <xs:element ref="p:status_izmene"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:element name="status" type="p:AmandmanStatus"/>
+    <xs:element name="Odeljak">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajOdeljka"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Clan">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajClan"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Stav">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajStav"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Tacka">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajTacke"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Podtacka">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajPodtacke"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Glava">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajGlave"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Deo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Sadrzaj" type="p:SadrzajDeo"/>
+                <xs:element ref="p:status"/>
+            </xs:sequence>
+            <xs:attribute name="oznaka" type="xs:string"/>
+            <xs:attribute name="naziv" type="xs:string"/>
+            <xs:attribute name="opis" type="xs:string"/>
+            <xs:anyAttribute namespace="##any"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Sporedni_deo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Pravni_osnov_donosenja" type="xs:string"/>
+                <xs:element name="Donet_od_strane" type="xs:string"/>
+                <xs:element name="Postupak_donosenja" type="xs:string"/>
+                <xs:element name="Cilj_donosenja" type="xs:string"/>
+                <xs:element name="Meta_podaci">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="p:BrPozitivnihGlasova"/>
+                            <xs:element ref="p:BrUkupnihGlasova"/>
+                            <xs:element ref="p:Oznaka"/>
+                            <xs:element ref="p:Mesto"/>
+                            <xs:element ref="p:Datum"/>
+                            <xs:element ref="p:Vrsta"/>
+                            <xs:element ref="p:Naziv"/>
+                            <xs:element ref="p:OznakaAmandmana"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="vocab"/>
+            <xs:attribute name="about"/>
+            <xs:attribute name="rel"/>
+            <xs:attribute name="href"/>
+            <xs:anyAttribute/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="OznakaAmandmana">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:anyAttribute namespace="##any" processContents="lax"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

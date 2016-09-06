@@ -1,0 +1,25 @@
+<div>
+	<div style="align: center; width: 50;" class="jumbotron">
+		<h2 align="center">Sednica</h2>
+		<br> <br>
+		<div class="container">
+			<table class="table">
+				<tr ng-repeat="act in actsInProcedure">
+					<td><a class="amandmani" ng-click="getActAmendments(act)">{{act.naziv.value}}
+							{{act.datum.value}}</a>
+						<div ng-show="amId==act.oznaka.value && hide">
+						<ul ng-repeat="am in amendments">
+							<li><u>{{am.naziv.value}}</u> : Za <input ng-model="za" type="number" min="0" max="1000"> &nbsp; / &nbsp; 
+							Protiv <input ng-model="protiv" type="number" min="0" max="1000"> 
+							<button class="btn btn-info btn-xs" ng-click="voteForAmendment(za,protiv,am)"><span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+							</button>
+							</li>
+						</ul>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success" ng-click="usvajaSeSve(act)">Usvaja se u celini</button>
+						</div>
+						</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Amandman 
+xmlns:p="http://www.parlament.gov.rs/propisi/" 
+xmlns="http://www.w3.org/ns/rdfa#"
+xmlns:pred="http://www.parlament.gov.rs/propisi/predicate/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.parlament.gov.rs/propisi/ ../../schema/amandman.xsd ">
+  <p:Glavni_deo/>
+  <p:Sporedni_deo 
+  		vocab="http://www.parlament.gov.rs/propisi/predicate/" 
+		about="http://www.parlament.gov.rs/propisi/amandmani/doneti/a2"
+		rel="pred:belongsTo" 
+        href="http://www.parlament.gov.rs/propisi/akti/doneti/doc1">
+    <p:Pravni_osnov_donosenja>p:Pravni_osnov_donosenja</p:Pravni_osnov_donosenja>
+    <p:Donet_od_strane>p:Donet_od_strane</p:Donet_od_strane>
+    <p:Postupak_donosenja>p:Postupak_donosenja</p:Postupak_donosenja>
+    <p:Cilj_donosenja>p:Cilj_donosenja</p:Cilj_donosenja>
+    <p:Meta_podaci>
+      <p:BrPozitivnihGlasova property="pred:brPozitivnihGlasova" datatype="xs:int">7</p:BrPozitivnihGlasova>
+      <p:BrUkupnihGlasova>0</p:BrUkupnihGlasova>
+      <p:Oznaka property="pred:oznaka" datatype="xs:string">doc1</p:Oznaka>
+      <p:Mesto property="pred:mesto" datatype="xs:string">Novi Sad</p:Mesto>
+      <p:Datum property="pred:datum" datatype="xs:date">2015-04-30</p:Datum>
+      <p:Vrsta property="pred:vrsta" datatype="xs:string">Predlog</p:Vrsta>
+      <p:Naziv property="pred:naziv" datatype="xs:string">Predlog o blejanju jace</p:Naziv>
+      <p:OznakaAmandmana property="pred:oznakaAmandmana" datatype="xs:string">a2</p:OznakaAmandmana>
+    </p:Meta_podaci>
+  </p:Sporedni_deo>
+</p:Amandman>

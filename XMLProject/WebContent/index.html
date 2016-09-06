@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Skupstina grada</title>
+
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/angular-ui-router.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/ui-bootstrap.js"></script>
+
+<script src="index.js"></script>
+<script src="client/login/login.js"></script>
+<script src="client/login/loginResource.js"></script>
+
+<script src="client/amendments/amendments.js"></script>
+<script src="client/amendments/amendmentsResource.js"></script>
+<script src="client/session/session.js"></script>
+<script src="client/session/sessionResource.js"></script>
+<script src="client/acts/acts.js"></script>
+<script src="client/acts/actsResource.js"></script>
+
+
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<style>
+#logo {
+	float: left;
+}
+
+#nav {
+	float: left;
+	background-color: #004080;
+	width: 100%;
+	height: 66px;
+	box-shadow: 0px 1px 10px #5E5E5E;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	background-color: #004080;
+}
+
+input[type="number"] {
+
+  background-color : #004080; 
+
+}
+
+.title {
+	display: none;
+	color: #EDEDED;
+	font-family: century gothic;
+	font-size: 14px;
+	width: 350px;
+	margin-top: 6px;
+	margin-left: 150px;
+	font-weight: bold;
+	float: left;
+}
+
+body {
+	font-family: century gothic;
+}
+
+.klasa {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+	opacity: 0.6;
+	-webkit-filter: grayscale(1); /* Old WebKit */
+	filter: grayscale(1);
+}
+
+.topright {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 14px;
+}
+
+.jumbotron {
+	position: relative;
+	background-color: #004080;
+	opacity: 0.9;
+	font-family: century gothic;
+	text-decoration: none;
+	color: white;
+	background-color: #004080;
+}
+
+.amandmani {
+	font-family: century gothic;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+
+.amandmani:hover {
+	color: white;
+}
+
+.center {
+	margin: 0 auto;
+	padding: 10px;
+}
+
+/* ul {
+	position: relative;
+	top: 0px;
+	text-align: center;
+} */
+.navigation {
+	position: relative;
+	top: 0px;
+	list-style-type: none;
+	float: left;
+	text-align: center;
+}
+
+img {
+	width: 200px;
+	height: 120px;
+	display: block;
+	margin: 0 auto;
+}
+
+li {
+	position: relative;
+	top: 0px;
+	padding: 15px;
+	display: inline;
+}
+
+#nav a {
+	position: relative;
+	top: 0px;
+	font-size: 1.6em;
+	text-transform: uppercase;
+	text-shadow: 0 0 0.3em #464646;
+	font-weight: bold;
+	font-family: century gothic;
+	text-decoration: none;
+	color: white;
+	opacity: 0.8;
+	text-align: center;
+}
+
+#nav a:hover {
+	opacity: 0.36;
+}
+</style>
+
+</head>
+<body ng-app="xml">
+	<img class="klasa" src="grb.png">
+
+	<div id='nav' align="center">
+		<img
+			src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Emblem_of_the_National_Assembly_of_Serbia.svg/2000px-Emblem_of_the_National_Assembly_of_Serbia.svg.png"
+			id="logo" /> <br>
+		<div>
+			<ul class='navigation'>
+				<li class='navigation-Acts'"><a ui-sref="acts">Akti</a></li>
+				<li class='navigation-Crew'><a ui-sref="actsInProcedure">Akti u proceduri</a></li>
+				<li class='navigation-Amendments'
+					ng-show="getCurrentUserRole()!='citizen' && isLoggedIn()"><a
+					ui-sref="amendments">Amandmani</a></li>
+				<!-- <li class='navigation-Promos'
+					ng-show="getCurrentUserRole()!='citizen' && isLoggedIn()"><a
+					ui-sref>Predlozi akta</a></li>
+				<li class='navigation-Parties'
+					ng-show="getCurrentUserRole()!='citizen' && isLoggedIn()"><a
+					ui-sref>Predlozi </a></li> -->
+				<li class='navigation-Tricks'
+					ng-show="getCurrentUserRole()=='president' && isLoggedIn()"><a
+					ui-sref="session">Sednica</a></li>
+				<li class='navigation-Login' ng-show="!isLoggedIn()"><a
+					ui-sref="login">Prijava</a></li>
+				<li ng-show="isLoggedIn()"><a ng-click="logout()">Odjava</a></li>
+
+			</ul>
+		</div>
+	</div>
+	<div ui-view
+		style="margin-top: 10%; padding: 1px 16px; height: 1000px;"></div>
+</body>
+</html>

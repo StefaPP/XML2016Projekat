@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns6:Amandman xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/ns/rdfa#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:p="http://www.parlament.gov.rs/propisi" xmlns:pred="http://www.parlament.gov.rs/propisi/predicate/" xmlns:ns6="http://www.parlament.gov.rs/propisi/">
+    <ns6:Glavni_deo/>
+    <ns6:Sporedni_deo vocab="http://www.parlament.gov.rs/propisi/predicate/" about="http://www.parlament.gov.rs/propisi/amandmani/u_proceduri/a1" rel="pred:belongsTo" href="http://www.parlament.gov.rs/propisi/akti/u_proceduri/doc5">
+        <ns6:Pravni_osnov_donosenja>p:Pravni_osnov_donosenja</ns6:Pravni_osnov_donosenja>
+        <ns6:Donet_od_strane>p:Donet_od_strane</ns6:Donet_od_strane>
+        <ns6:Postupak_donosenja>p:Postupak_donosenja</ns6:Postupak_donosenja>
+        <ns6:Cilj_donosenja>p:Cilj_donosenja</ns6:Cilj_donosenja>
+        <ns6:Meta_podaci>
+            <ns6:BrPozitivnihGlasova datatype="xs:int" property="pred:brPozitivnihGlasova">7</ns6:BrPozitivnihGlasova>
+            <ns6:BrUkupnihGlasova>0</ns6:BrUkupnihGlasova>
+            <ns6:Oznaka datatype="xs:string" property="pred:oznaka">doc5</ns6:Oznaka>
+            <ns6:Mesto datatype="xs:string" property="pred:mesto">Novi Sad</ns6:Mesto>
+            <ns6:Datum datatype="xs:date" property="pred:datum">2016-01-31</ns6:Datum>
+            <ns6:Vrsta datatype="xs:string" property="pred:vrsta">Predlog</ns6:Vrsta>
+            <ns6:Naziv datatype="xs:string" property="pred:naziv">Predlog o doprinosu</ns6:Naziv>
+            <ns6:OznakaAmandmana datatype="xs:string" property="pred:oznakaAmandmana">a1</ns6:OznakaAmandmana>
+        </ns6:Meta_podaci>
+    </ns6:Sporedni_deo>
+</ns6:Amandman>

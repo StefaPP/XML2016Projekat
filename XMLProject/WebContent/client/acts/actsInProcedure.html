@@ -1,0 +1,71 @@
+<div>
+	<div style="align: center; width: 50;" class="jumbotron">
+	<button class="btn btn-success topright" ng-click="value= !value;">Dodaj
+			novi akt</button>
+		<h2 align="center">Akti u proceduri</h2>
+		<br /> <br>
+		<div class="container">
+		<table>
+				<tr>
+					<td>Datum predlaganja:</td>
+					<td><input type="text" ng-model="srch.datum.value"
+						class="form-control" style="margin-left: 10px;" /></td>
+				</tr>
+
+				<tr>
+					<td>Naslov:</td>
+					<td><input type="text" ng-model="srch.naziv.value"
+						class="form-control" style="margin-top: 10px; margin-left: 10px;" /></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" style="text-align: center;"><button
+							ng-click="search()" class="btn btn-success"
+							style="margin-top: 10px;">Pretraga</button></td>
+				</tr>
+			</table>
+
+			<br /> <br />
+			<table class="table">
+				<tr>
+					<th>Naziv</th>
+					<th>Datum</th>
+					<th>Vrsta</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr ng-repeat="act in actsInProcedure | filter:srch">
+					<td width="60%">{{act.naziv.value}}</td>
+					<td>{{act.datum.value}}</td>
+					<td>{{act.vrsta.value}}</td>
+					<td><button class="btn btn-danger" ng-click="povuciAkt(act)">Povuci akt</button>
+				</tr>
+			</table>
+		</div>
+		<br><br>
+	<div align="center" class="container" ng-show="value">
+			<br>
+			<br>
+			<div class="form-group">
+				<br>
+				<br>
+				<div style="float: left; width: 40%; border-style: solid;">
+					<br>
+					<br>
+					<h3>Upload akta</h3>
+					<br>
+					<input id="file" type="file" name="fajl" /> <br />
+					<button ng-click="uploadAct()" class="btn btn-info">Sacuvaj</button>
+				</div>
+				<div style="float: left; width: 20%;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+				<div style="float: left; width: 40%;">
+					<label for="act">Novi akt:</label>
+					<textarea class="form-control" rows="15" id="act" ng-model="act"></textarea>
+					<br> <br>
+					<button ng-click="addAct()" class="btn btn-success">Predlozi</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

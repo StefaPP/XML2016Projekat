@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Akt xmlns:p="http://www.parlament.gov.rs/propisi" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.parlament.gov.rs/propisi ../../schema/akt.xsd ">
+  <p:Glavni_deo/>
+<p:Sporedni_deo about="http://www.parlament.gov.rs/propisi/akti/doneti/doc3">
+    <p:Donet_akt>
+      <p:Donet_od_strane>p:Predlagac</p:Donet_od_strane>
+      <p:Po_postupku>p:Upucuje_se</p:Po_postupku>
+      <p:Po_cilju>p:bla</p:Po_cilju>
+      <p:Meta_podaci>
+       		<p:Oznaka property="pred:oznaka" datatype="xs:string">doc3</p:Oznaka>
+        	<p:Datum property="pred:datum" datatype="xs:date">2015-08-03</p:Datum>
+        	<p:Vrsta property="pred:vrsta" datatype="xs:string">Odluka</p:Vrsta>
+        	<p:Naziv property="pred:naziv" datatype="xs:string">Akt nesme se krast</p:Naziv>
+      	</p:Meta_podaci>
+      	<p:Osnov_donosenja>dsa</p:Osnov_donosenja>
+    </p:Donet_akt>
+  </p:Sporedni_deo>
+</p:Akt>
